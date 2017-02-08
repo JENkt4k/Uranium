@@ -24,8 +24,8 @@ vertex =
     }
 
 fragment =
-    uniform mediump vec4 u_ambientColor;
-    uniform mediump vec4 u_diffuseColor;
+    uniform mediump vec4 u_ambient_color;
+    uniform mediump vec4 u_diffuse_color;
     uniform highp vec3 u_lightPosition;
     uniform highp vec3 u_viewPosition;
     uniform mediump float u_opacity;
@@ -40,14 +40,14 @@ fragment =
         mediump vec4 final_color = vec4(0.0);
 
         /* Ambient Component */
-        final_color += u_ambientColor;
+        final_color += u_ambient_color;
 
         highp vec3 normal = normalize(v_normal);
         highp vec3 light_dir = normalize(u_lightPosition - v_vertex);
 
         /* Diffuse Component */
         highp float n_dot_l = clamp(dot(normal, light_dir), 0.0, 1.0);
-        final_color += (n_dot_l * u_diffuseColor);
+        final_color += (n_dot_l * u_diffuse_color);
 
         final_color.a = u_opacity;
 
@@ -84,8 +84,8 @@ vertex41core =
 
 fragment41core =
     #version 410
-    uniform mediump vec4 u_ambientColor;
-    uniform mediump vec4 u_diffuseColor;
+    uniform mediump vec4 u_ambient_color;
+    uniform mediump vec4 u_diffuse_color;
     uniform highp vec3 u_lightPosition;
     uniform highp vec3 u_viewPosition;
     uniform mediump float u_opacity;
@@ -101,14 +101,14 @@ fragment41core =
         mediump vec4 final_color = vec4(0.0);
 
         /* Ambient Component */
-        final_color += u_ambientColor;
+        final_color += u_ambient_color;
 
         highp vec3 normal = normalize(v_normal);
         highp vec3 light_dir = normalize(u_lightPosition - v_vertex);
 
         /* Diffuse Component */
         highp float n_dot_l = clamp(dot(normal, light_dir), 0.0, 1.0);
-        final_color += (n_dot_l * u_diffuseColor);
+        final_color += (n_dot_l * u_diffuse_color);
 
         final_color.a = u_opacity;
 
@@ -119,8 +119,8 @@ fragment41core =
     }
 
 [defaults]
-u_ambientColor = [0.3, 0.3, 0.3, 1.0]
-u_diffuseColor = [1.0, 1.0, 1.0, 1.0]
+u_ambient_color = [0.3, 0.3, 0.3, 1.0]
+u_diffuse_color = [1.0, 1.0, 1.0, 1.0]
 u_opacity = 0.5
 u_texture = 0
 
